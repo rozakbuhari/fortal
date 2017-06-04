@@ -12,21 +12,19 @@
 namespace App\Controller;
 
 use App\Core\Controller;
+use App\Model\Post;
 
 class HomeController extends Controller
 {
     /**
-     * PAGE: index
-     * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
+     * Halaman beranda
      */
     public function index()
     {
-    	$title = "Dashboard";
-
-        // load views
-        require APP . 'view/_templates/header.php';
-	    require APP . 'view/dashboard/index.php';
-        require APP . 'view/_templates/footer.php';
+        $Post = new Post();
+        $posts = $Post->get();
+        
+        echo view('beranda', compact('posts'));
     }
 
 }

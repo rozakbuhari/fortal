@@ -1,0 +1,77 @@
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="carousel slide" id="featured">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <article class="featured">
+                            <div class="overlay"></div>
+                            <figure>
+                                <img src="images/news/bos-beras.jpg">
+                            </figure>
+                            <div class="details">
+                                <div class="category"><a href="#">Beras Bulog</a></div>
+                                <h1><a href="#">Akibat Gagal Panen, Harga Beras Melonjak Tinggi, Bikin Bos
+                                        Beras Melongo</a></h1>
+                                <time>29 Mei 2017</time>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#featured" data-slide="prev">
+                    <span class="ion-ios-arrow-left" aria-hidden="true"></span>
+                    <span class="sr-only">Sebelumnya</span>
+                </a>
+                <a class="right carousel-control" href="#featured" data-slide="next">
+                    <span class="ion-ios-arrow-right" aria-hidden="true"></span>
+                    <span class="sr-only">Berikutnya</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 sidebar">
+            <aside>
+                <h1 class="aside-title">POPULER <a href="#" class="all">Lihat Semuanya <i
+                                class="ion-ios-arrow-right"></i></a></h1>
+                <div class="aside-body">
+                    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <article class="article-mini">
+                        <div class="inner">
+                            <figure>
+                                <a href="#">
+                                    <img src="images/news/img08.jpg">
+                                </a>
+                            </figure>
+                            <div class="padding">
+                                <h1>
+                                    <a href="#">
+                                        <?php echo e($post->title); ?>
+
+                                    </a>
+                                </h1>
+                            </div>
+                        </div>
+                    </article>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+            </aside>
+            <aside id="sponsored">
+                <h1 class="aside-title">IKLAN</h1>
+                <div class="aside-body">
+                    <ul class="sponsored">
+                        <li>
+                            <a href="#">
+                                <img src="images/iklan.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/iklan.png">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

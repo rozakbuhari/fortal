@@ -1,69 +1,57 @@
 
-DROP TABLE IF EXISTS `book`;
-
-CREATE TABLE `book` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `isbn` varchar(45) NOT NULL,
-  `title` varchar(45) NOT NULL,
-  `author` varchar(45) NOT NULL,
-  `publisher` varchar(45) NOT NULL,
-  `year` year(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-
-
-DROP TABLE IF EXISTS `book_member`;
-
-CREATE TABLE `book_member` (
-  `book_id` int(11) NOT NULL,
-  `member_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `due_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-DROP TABLE IF EXISTS `member`;
-
-CREATE TABLE `member` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL DEFAULT '',
-  `address` varchar(80) NOT NULL DEFAULT '',
-  `contact` varchar(45) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
-
 DROP TABLE IF EXISTS `user`;
-
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `username` varchar(48) NOT NULL,
+  `email` VARCHAR(64) NOT NULL,
   `password` varchar(64) NOT NULL,
   `fullname` VARCHAR(64) NOT NULL,
-  `email` VARCHAR(64) NOT NULL
+  `gender` TINYINT NOT NULL
 ) AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `role`;
-
 CREATE TABLE `role` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(48) NOT NULL,
   `title` varchar(48) NOT NULL
-);
+) AUTO_INCREMENT=1;
 
+DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role` (
   `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
-);
+) AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE `posts` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `title` varchar(48) NOT NULL,
+  `content` TEXT NULL
+) AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(48) NOT NULL
+) AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS `tag_post`;
+CREATE TABLE `tag_post` (
+  `tag_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`),
+  FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`)
+) AUTO_INCREMENT=1;
+
 
 
 # User Seeds
-INSERT INTO `user` (`username`, `password`, `fullname`, `email`)
-VALUES ('admin', 'admin', 'Pengelola Perpustakaan', 'admin@verpush.com');
+INSERT INTO `user` (`password`, `fullname`, `email`, `gender`)
+VALUES ('admin', 'Administrator', 'admin@email.com', 1);
 
-INSERT INTO `user` (`username`, `password`, `fullname`, `email`)
-VALUES ('citra', 'citra', 'Ariyana Arcitra', 'arcitra@verpush.com');
+INSERT INTO `user` (`password`, `fullname`, `email`, `gender`)
+VALUES ('citra', 'Ariyana Arcitra', 'arcitra@email.com', 2);
 
 # Role Seeds
 INSERT INTO `role` (`name`, `title`)
@@ -79,16 +67,19 @@ VALUES ('1', '1');
 INSERT INTO `user_role` (`user_id`, `role_id`)
 VALUES ('2', '2');
 
+#Post Seeds
+INSERT INTO `posts` (`title`, `content`)
+VALUES ('Gara gara ini, semua orang jadi pintar', 'Lorem ipsum dolor sit amet.');
 
-# Book Seeds
-INSERT INTO `book` (`isbn`, `title`, `author`, `publisher`, `year`)
-VALUES ('9789791227780', 'Perahu Kertas', 'Dee Lestari', 'Bentang Pustaka & Truedee', '2004');
+INSERT INTO `posts` (`title`, `content`)
+VALUES ('Gara gara ini, semua orang jadi pintar', 'Lorem ipsum dolor sit amet.');
 
-INSERT INTO `book` (`isbn`, `title`, `author`, `publisher`, `year`)
-VALUES ('9793062797', 'Laskar Pelangi', 'Andrea Hirata', 'Bentang Pustaka', '2005');
+INSERT INTO `posts` (`title`, `content`)
+VALUES ('Gara gara ini, semua orang jadi pintar', 'Lorem ipsum dolor sit amet.');
 
-INSERT INTO `book` (`isbn`, `title`, `author`, `publisher`, `year`)
-VALUES ('9789792248616', 'Negeri 5 Menara', 'Ahmad Fuadi', 'Gramedia', '2009');
+#Post Seeds
+INSERT INTO `tags` (`name`)
+VALUES ('Teknologi');
 
-INSERT INTO `book` (`isbn`, `title`, `author`, `publisher`, `year`)
-VALUES ('9789791102261', 'Bidadari Bidadari Surga', 'Tere Liye', 'Republika', '2008');
+INSERT INTO `tag_post` (`tag_id`, `post_id`)
+VALUES (1, 1);

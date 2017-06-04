@@ -1,6 +1,6 @@
 {
-    "name": "rozakbuhari/verpush",
-    "description": "Verpush - simple library application",
+    "name": "rozakbuhari/fortal",
+    "description": "Fortal - simple news portal",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -10,12 +10,18 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "jenssegers/blade": "dev-master",
+        "gregwar/captcha": "dev-master"
+    },
     "autoload":
     {
         "psr-4":
         {
             "App\\" : "app/"
-        }
+        },
+        "files": [
+            "app/helper.php"
+        ]
     }
 }

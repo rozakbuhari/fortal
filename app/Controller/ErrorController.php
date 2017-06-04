@@ -21,9 +21,6 @@ class ErrorController extends Controller
      */
     public function index()
     {
-        // load views
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/error/index.php';
-        require APP . 'view/_templates/footer.php';
+        echo "<h1>Waduuuuuh! ada yang salah tong!!!</h1>";
     }
 }
