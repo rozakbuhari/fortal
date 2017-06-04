@@ -50,7 +50,7 @@
 <header class="primary">
     <div class="container">
         <div class="brand">
-            <a href="index.html">
+            <a href="#">
                 <div class="text">
                     FORTAL
                 </div>
@@ -59,58 +59,9 @@
                 Tempat <br> Berita Kekinian <br> Alias Up-to-date!
             </h2>
         </div>
-        <div class="right social trp">
-            <li>
-                <div class="search">
-                    <form>
-                        <input type="text" class="form-control search-input" name="s" placeholder="Search">
-                    </form>
-                </div>
-            </li>
-            <li>
-                <a href="#" class="search-toggle">
-                    <svg>
-                        <rect/>
-                    </svg>
-                    <i class="ion-search"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="rss">
-                    <svg>
-                        <rect/>
-                    </svg>
-                    <i class="ion-social-rss"></i>
-                </a>
-            </li>
-        </div>
     </div>
+    <hr>
 </header>
-<nav class="menu">
-    <div class="container">
-        <ul>
-            <li><a href="category.html">NGE-TRENDZ
-                    <div class="badge">Hot!</div>
-                </a></li>
-            <li class="magz-dropdown"><a href="#">NASIONAL <i class="ion-ios-arrow-right"></i></a>
-                <ul>
-                    <li><a href="#">POLITIK</a></li>
-                    <li class="magz-dropdown">
-                        <a href="#">TEKNOLOGI <i class="ion-ios-arrow-right"></i></a>
-                        <ul>
-                            <li><a href="3">GADGET</a></li>
-                            <li class="magz-dropdown"><a href="#">GAMING <i class="ion-ios-arrow-right"></i></a>
-                                <ul>
-                                    <li><a href="#">ADVENTURE</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</nav>
 
 <section>
     <div class="container">
@@ -343,7 +294,7 @@
                         <img src="{{ URL . 'auth/captcha' }}" alt="captcha" class="img-thumbnail">
                     </div>
                     <div class="form-group">
-                          <input type="text" class="form-control input-lg" name="phrase" placeholder="Insert Captcha">
+                        <input type="text" class="form-control input-lg" name="phrase" placeholder="Insert Captcha">
                     </div>
                 </form>
             </div>

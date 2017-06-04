@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Fortal - Tempat Berita Kekinian</title>
-    <link rel="stylesheet" href="scripts/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="scripts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="scripts/toast/jquery.toast.min.css">
+    <link rel="stylesheet" href="<?php echo e(URL . 'scripts/bootstrap/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo e(URL . 'css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo e(URL . 'scripts/ionicons/css/ionicons.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo e(URL . 'scripts/toast/jquery.toast.min.css'); ?>">
 </head>
 
 <body>
@@ -23,42 +23,25 @@
             </div>
             <div class="right">
                 <ul class="topbar-nav">
-                    <li class="active"><a href="index.html"><i class="ion-ios-home-outline"></i> Beranda</a></li>
-                    <li><a href="#"><i class="ion-ios-email-outline"></i> Kontak</a></li>
-                    <li><a href="#daftar" data-toggle="modal" data-target="#modalDaftar">Daftar</a></li>
-                    <li>
-                        <?php if(!isset($_SESSION["authenticated"])): ?>
-                        <a href="#login-modal" data-toggle="modal" data-target="#login-modal">
-                            <i class="ion-ios-help-outline"></i> Login</a>
-                        <?php else: ?>
-                            
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                        
-                                    
-                                    
-                                        
-                                    
-                                
-                            
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <?php echo e($_SESSION['user']->fullname); ?> <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li style="float: none">
-                                            <a href="<?php echo e(URL. 'auth/profile'); ?>" style="margin-left: 0; padding: 10px;">Profil</a></li>
-                                        <li style="float: none">
-                                            <a href="<?php echo e(URL. 'auth/logout'); ?>" style="margin-left: 0; padding: 10px;">Logout</a></li>
-                                    </ul>
-                                </li>
+                    <?php if(!isset($_SESSION["authenticated"])): ?>
+                        <li><a href="#" data-toggle="modal" data-target="#modalDaftar">Daftar</a></li>
+                        <li>
+                            <a href="#login-modal" data-toggle="modal" data-target="#login-modal">
+                                <i class="ion-ios-help-outline"></i> Login
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <?php echo e($_SESSION['user']->fullname); ?> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li style="float: none">
+                                    <a href="<?php echo e(URL. 'auth/profile'); ?>" style="margin-left: 0; padding: 10px;">Profil</a></li>
+                                <li style="float: none">
+                                    <a href="<?php echo e(URL. 'auth/logout'); ?>" style="margin-left: 0; padding: 10px;">Logout</a></li>
                             </ul>
-                        <?php endif; ?>
-                    </li>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -290,34 +273,30 @@
 <div id="login-modal" class="modal" role="dialog">
     <div class="modal-dialog">
 
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Login</h4>
             </div>
             <div class="modal-body">
-                <form action="<?= URL ?>auth/login" method="post">
-                    <div>
-                        <label for="email">Email</label>
+                <form action="<?= URL ?>auth/login" method="post" id="formLogin">
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
                         <div>
-                            <input type="email" name="email">
+                            <input type="email" name="email" class="form-control" id="inputEmail">
                         </div>
                     </div>
-                    <div>
-                        <label for="password">Password</label>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
                         <div>
-                            <input type="password" name="password">
+                            <input type="password" name="password" class="form-control" id="inputPassword">
                         </div>
-                    </div>
-                    <div>
-                        <button type="submit">Login</button>
-                        <a href="<?= URL ?>auth/forgot">Lupa Password</a>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="<?php echo e(URL . 'auth/forgot'); ?>" class="btn btn-link">Lupa Password</a>
+                <button type="submit" form="formLogin" class="btn btn-primary">Login</button>
             </div>
         </div>
 
@@ -333,7 +312,7 @@
                 <h4 class="modal-title">Daftar Anggota</h4>
             </div>
             <div class="modal-body">
-                <form action="<?= URL ?>auth/register" method="post" id="form-register">
+                <form action="<?php echo e(URL . 'auth/register'); ?>" method="post" id="form-register">
                     <div class="form-group">
                         <label for="reg-username">Nama</label>
                         <input type="text" class="form-control" name="fullname">
@@ -361,7 +340,7 @@
                         <input type="password" class="form-control">
                     </div>
                     <div class="form-group">
-                        <img src="<?php echo e(URL. 'auth/captcha'); ?>" alt="captcha" class="img-thumbnail">
+                        <img src="<?php echo e(URL . 'auth/captcha'); ?>" alt="captcha" class="img-thumbnail">
                     </div>
                     <div class="form-group">
                           <input type="text" class="form-control input-lg" name="phrase" placeholder="Insert Captcha">
@@ -377,12 +356,12 @@
     </div>
 </div>
 
-<script src="js/jquery.js"></script>
-<script src="js/jquery.migrate.js"></script>
-<script src="scripts/bootstrap/bootstrap.min.js"></script>
-<script src="js/e-magz.js"></script>
-<script src="scripts/toast/jquery.toast.min.js"></script>
-<script src="scripts/touchswipe/jquery.touchSwipe.min.js"></script>
-<script src="scripts/jquery-number/jquery.number.min.js"></script>
+<script src="<?php echo e(URL . 'js/jquery.js'); ?>"></script>
+<script src="<?php echo e(URL . 'js/jquery.migrate.js'); ?>"></script>
+<script src="<?php echo e(URL . 'scripts/bootstrap/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo e(URL . 'js/e-magz.js'); ?>"></script>
+<script src="<?php echo e(URL . 'scripts/toast/jquery.toast.min.js'); ?>"></script>
+<script src="<?php echo e(URL . 'scripts/touchswipe/jquery.touchSwipe.min.js'); ?>"></script>
+<script src="<?php echo e(URL . 'scripts/jquery-number/jquery.number.min.js'); ?>"></script>
 </body>
 </html>

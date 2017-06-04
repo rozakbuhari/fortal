@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Fortal - Tempat Berita Kekinian</title>
-    <link rel="stylesheet" href="{{ URL . 'scripts/bootstrap/bootstrap.min.css' }}">
-    <link rel="stylesheet" href="{{ URL . 'css/style.css' }}">
-    <link rel="stylesheet" href="{{ URL . 'scripts/ionicons/css/ionicons.min.css' }}">
-    <link rel="stylesheet" href="{{ URL . 'scripts/toast/jquery.toast.min.css' }}">
+    <link rel="stylesheet" href="<?php echo e(URL . 'scripts/bootstrap/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo e(URL . 'css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo e(URL . 'scripts/ionicons/css/ionicons.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo e(URL . 'scripts/toast/jquery.toast.min.css'); ?>">
 </head>
 
 <body>
@@ -23,25 +23,25 @@
             </div>
             <div class="right">
                 <ul class="topbar-nav">
-                    @if(!isset($_SESSION["authenticated"]))
+                    <?php if(!isset($_SESSION["authenticated"])): ?>
                         <li><a href="#" data-toggle="modal" data-target="#modalDaftar">Daftar</a></li>
                         <li>
                             <a href="#login-modal" data-toggle="modal" data-target="#login-modal">
                                 <i class="ion-ios-help-outline"></i> Login
                             </a>
                         </li>
-                    @else
+                    <?php else: ?>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ $_SESSION['user']->fullname }} <span class="caret"></span></a>
+                                <?php echo e($_SESSION['user']->fullname); ?> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li style="float: none">
-                                    <a href="{{ URL. 'auth/profile' }}" style="margin-left: 0; padding: 10px;">Profil</a></li>
+                                    <a href="<?php echo e(URL. 'auth/profile'); ?>" style="margin-left: 0; padding: 10px;">Profil</a></li>
                                 <li style="float: none">
-                                    <a href="{{ URL. 'auth/logout' }}" style="margin-left: 0; padding: 10px;">Logout</a></li>
+                                    <a href="<?php echo e(URL. 'auth/logout'); ?>" style="margin-left: 0; padding: 10px;">Logout</a></li>
                             </ul>
                         </li>
-                    @endif
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -50,7 +50,7 @@
 <header class="primary">
     <div class="container">
         <div class="brand">
-            <a href="index.html">
+            <a href="#">
                 <div class="text">
                     FORTAL
                 </div>
@@ -59,62 +59,13 @@
                 Tempat <br> Berita Kekinian <br> Alias Up-to-date!
             </h2>
         </div>
-        <div class="right social trp">
-            <li>
-                <div class="search">
-                    <form>
-                        <input type="text" class="form-control search-input" name="s" placeholder="Search">
-                    </form>
-                </div>
-            </li>
-            <li>
-                <a href="#" class="search-toggle">
-                    <svg>
-                        <rect/>
-                    </svg>
-                    <i class="ion-search"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="rss">
-                    <svg>
-                        <rect/>
-                    </svg>
-                    <i class="ion-social-rss"></i>
-                </a>
-            </li>
-        </div>
     </div>
+    <hr>
 </header>
-<nav class="menu">
-    <div class="container">
-        <ul>
-            <li><a href="category.html">NGE-TRENDZ
-                    <div class="badge">Hot!</div>
-                </a></li>
-            <li class="magz-dropdown"><a href="#">NASIONAL <i class="ion-ios-arrow-right"></i></a>
-                <ul>
-                    <li><a href="#">POLITIK</a></li>
-                    <li class="magz-dropdown">
-                        <a href="#">TEKNOLOGI <i class="ion-ios-arrow-right"></i></a>
-                        <ul>
-                            <li><a href="3">GADGET</a></li>
-                            <li class="magz-dropdown"><a href="#">GAMING <i class="ion-ios-arrow-right"></i></a>
-                                <ul>
-                                    <li><a href="#">ADVENTURE</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</nav>
 
 <section>
     <div class="container">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
 </section>
 <footer class="footer">
@@ -295,7 +246,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="{{ URL . 'auth/forgot' }}" class="btn btn-link">Lupa Password</a>
+                <a href="<?php echo e(URL . 'auth/forgot'); ?>" class="btn btn-link">Lupa Password</a>
                 <button type="submit" form="formLogin" class="btn btn-primary">Login</button>
             </div>
         </div>
@@ -312,7 +263,7 @@
                 <h4 class="modal-title">Daftar Anggota</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ URL . 'auth/register'  }}" method="post" id="form-register">
+                <form action="<?php echo e(URL . 'auth/register'); ?>" method="post" id="form-register">
                     <div class="form-group">
                         <label for="reg-username">Nama</label>
                         <input type="text" class="form-control" name="fullname">
@@ -340,10 +291,10 @@
                         <input type="password" class="form-control">
                     </div>
                     <div class="form-group">
-                        <img src="{{ URL . 'auth/captcha' }}" alt="captcha" class="img-thumbnail">
+                        <img src="<?php echo e(URL . 'auth/captcha'); ?>" alt="captcha" class="img-thumbnail">
                     </div>
                     <div class="form-group">
-                          <input type="text" class="form-control input-lg" name="phrase" placeholder="Insert Captcha">
+                        <input type="text" class="form-control input-lg" name="phrase" placeholder="Insert Captcha">
                     </div>
                 </form>
             </div>
@@ -356,12 +307,12 @@
     </div>
 </div>
 
-<script src="{{ URL . 'js/jquery.js' }}"></script>
-<script src="{{ URL . 'js/jquery.migrate.js' }}"></script>
-<script src="{{ URL . 'scripts/bootstrap/bootstrap.min.js' }}"></script>
-<script src="{{ URL . 'js/e-magz.js' }}"></script>
-<script src="{{ URL . 'scripts/toast/jquery.toast.min.js' }}"></script>
-<script src="{{ URL . 'scripts/touchswipe/jquery.touchSwipe.min.js' }}"></script>
-<script src="{{ URL . 'scripts/jquery-number/jquery.number.min.js' }}"></script>
+<script src="<?php echo e(URL . 'js/jquery.js'); ?>"></script>
+<script src="<?php echo e(URL . 'js/jquery.migrate.js'); ?>"></script>
+<script src="<?php echo e(URL . 'scripts/bootstrap/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo e(URL . 'js/e-magz.js'); ?>"></script>
+<script src="<?php echo e(URL . 'scripts/toast/jquery.toast.min.js'); ?>"></script>
+<script src="<?php echo e(URL . 'scripts/touchswipe/jquery.touchSwipe.min.js'); ?>"></script>
+<script src="<?php echo e(URL . 'scripts/jquery-number/jquery.number.min.js'); ?>"></script>
 </body>
 </html>

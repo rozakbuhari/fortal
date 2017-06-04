@@ -79,4 +79,10 @@ class AuthController extends Controller {
         $builder->output();
     }
     
+    public function profile() {
+        
+        echo view('profile');
+        
+    }
+    
 }
