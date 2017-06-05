@@ -90,7 +90,7 @@
     <div class="container">
         <ul>
             <li>
-                <a href="#">Beranda</a>
+                <a href="{{ URL }}">BERANDA</a>
             </li>
             <li>
                 <a href="#">NGE-TRENDZ

@@ -1,10 +1,10 @@
 @extends('layout.dashboard')
 
 @section('content')
-    <h4>Perbarui Profil</h4>
-    <hr>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h4>Perbarui Profil</h4>
+            <hr>
             <form action="#" class="form-horizontal">
                 <div class="form-group">
                     <label for="inputNama" class="col-sm-3">Nama</label>
@@ -42,8 +42,8 @@
                     </div>
                 </div>
                 <div class="col-sm-offset-3">
-                    <button type="submit" class="btn btn-primary">Perbarui</button>
-                    <a href="{{ URL }}" class="btn btn-link">Batal</a>
+                    <a href="{{ URL }}" class="btn btn-link pull-right">Batal</a>
+                    <button type="submit" class="btn btn-primary pull-right">Perbarui</button>
                 </div>
             </form>
         </div>
