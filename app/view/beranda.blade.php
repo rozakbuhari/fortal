@@ -40,7 +40,7 @@
                         <div class="inner">
                             <figure>
                                 <a href="#">
-                                    <img src="images/news/img08.jpg">
+                                    <img src="holder.js/80x60">
                                 </a>
                             </figure>
                             <div class="padding">
@@ -61,12 +61,12 @@
                     <ul class="sponsored">
                         <li>
                             <a href="#">
-                                <img src="images/iklan.png">
+                                <img src="holder.js/175x175">
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <img src="images/iklan.png">
+                                <img src="holder.js/175x175">
                             </a>
                         </li>
                     </ul>
