@@ -105,54 +105,24 @@
                 <div class="block">
                     <h1 class="block-title">Berita Terbaru</h1>
                     <div class="block-body">
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="images/news/img12.jpg">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="single.html">Donec consequat lorem quis augue pharetra</a></h1>
+                        @foreach($posts as $post)
+                            <article class="article-mini">
+                                <div class="inner">
+                                    <figure>
+                                        <a href="#">
+                                            <img src="holder.js/80x60">
+                                        </a>
+                                    </figure>
+                                    <div class="padding">
+                                        <h1>
+                                            <a href="#">
+                                                {{ $post->title }}
+                                            </a>
+                                        </h1>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="images/news/img14.jpg">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="single.html">eu dapibus risus aliquam etiam ut venenatis</a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="images/news/img15.jpg">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="single.html">Nulla facilisis odio quis gravida vestibulum </a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="images/news/img16.jpg">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="single.html">Proin venenatis pellentesque arcu vitae </a></h1>
-                                </div>
-                            </div>
-                        </article>
+                            </article>
+                        @endforeach
                         <a href="#" class="btn btn-primary btn-magz white btn-block">Lihat Semua <i
                                     class="ion-ios-arrow-thin-right"></i></a>
                     </div>
@@ -314,5 +284,6 @@
 <script src="{{ URL . 'scripts/toast/jquery.toast.min.js' }}"></script>
 <script src="{{ URL . 'scripts/touchswipe/jquery.touchSwipe.min.js' }}"></script>
 <script src="{{ URL . 'scripts/jquery-number/jquery.number.min.js' }}"></script>
+<script src="{{ URL . 'scripts/holder/holder.min.js' }}"></script>
 </body>
 </html>

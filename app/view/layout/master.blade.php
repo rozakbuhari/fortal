@@ -50,7 +50,7 @@
 <header class="primary">
     <div class="container">
         <div class="brand">
-            <a href="index.html">
+            <a href="#">
                 <div class="text">
                     FORTAL
                 </div>
@@ -89,9 +89,14 @@
 <nav class="menu">
     <div class="container">
         <ul>
-            <li><a href="category.html">NGE-TRENDZ
+            <li>
+                <a href="#">Beranda</a>
+            </li>
+            <li>
+                <a href="#">NGE-TRENDZ
                     <div class="badge">Hot!</div>
-                </a></li>
+                </a>
+            </li>
             <li class="magz-dropdown"><a href="#">NASIONAL <i class="ion-ios-arrow-right"></i></a>
                 <ul>
                     <li><a href="#">POLITIK</a></li>
