@@ -12,7 +12,10 @@
 namespace App\Controller;
 
 use App\Core\Controller;
+use App\Model\Ad;
+use App\Model\Category;
 use App\Model\Post;
+use App\Model\SecurityQuestion;
 
 class HomeController extends Controller
 {
@@ -22,9 +25,23 @@ class HomeController extends Controller
     public function index()
     {
         $Post = new Post();
-        $posts = $Post->get();
+        if (!empty($_POST)) {
+            
+            $posts = $Post->getWhere([$_POST['filter'] => $_POST['query']]);
+        } else {
+            $posts = $Post->get();
+        }
         
-        echo view('beranda', compact('posts'));
+        $category = new Category();
+        $categories = $category->get();
+        
+        $question = new SecurityQuestion();
+        $questions = $question->get();
+        
+        $Ad = new Ad();
+        $ads = $Ad->notExpired();
+        
+        echo view('beranda', compact('posts', 'categories', 'questions', 'ads'));
     }
 
 }

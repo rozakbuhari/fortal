@@ -9,39 +9,17 @@
     <link rel="stylesheet" href="{{ URL . 'css/style.css' }}">
     <link rel="stylesheet" href="{{ URL . 'scripts/ionicons/css/ionicons.min.css' }}">
     <link rel="stylesheet" href="{{ URL . 'scripts/toast/jquery.toast.min.css' }}">
+
+    @yield('style')
+
 </head>
 
 <body>
-<div class="topbar">
-    <div class="container">
-        <div class="inner">
-            <div class="left">
-                <ul class="info">
-                    <li>
-                        <a href="#"><i class="ion-ios-email-outline"></i> editor@fortal.co.id</a></li>
-                </ul>
-            </div>
-            <div class="right">
-                <ul class="topbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{ $_SESSION['user']->fullname }} <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li style="float: none">
-                                <a href="{{ URL. 'auth/profile' }}" style="margin-left: 0; padding: 10px;">Profil</a></li>
-                            <li style="float: none">
-                                <a href="{{ URL. 'auth/logout' }}" style="margin-left: 0; padding: 10px;">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+@include('partial._topbar')
 <header class="primary">
     <div class="container">
         <div class="brand">
-            <a href="#">
+            <a href="{{ URL }}">
                 <div class="text">
                     FORTAL
                 </div>
@@ -53,6 +31,24 @@
     </div>
     <hr>
 </header>
+<nav class="menu">
+    <div class="container">
+        <ul>
+            <li>
+                <a href="{{ URL . 'posts' }}">POSTINGAN</a>
+            </li>
+            <li>
+                <a href="#">KATEGORI</a>
+            </li>
+            <li>
+                <a href="#">KOMENTAR</a>
+            </li>
+            <li>
+                <a href="{{ URL . 'ads' }}">IKLAN</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <section>
     <div class="container">
@@ -145,6 +141,9 @@
 <script src="{{ URL . 'scripts/toast/jquery.toast.min.js' }}"></script>
 <script src="{{ URL . 'scripts/touchswipe/jquery.touchSwipe.min.js' }}"></script>
 <script src="{{ URL . 'scripts/jquery-number/jquery.number.min.js' }}"></script>
-<script src="{{ URL . 'scripts/holder/holder.min.js' }}"></script>
+<script src="{{ URL . 'scripts/jquery.dataTables.min.js' }}"></script>
+
+@yield('script')
+
 </body>
 </html>

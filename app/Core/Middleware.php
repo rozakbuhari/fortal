@@ -3,6 +3,8 @@
 namespace App\Core;
 
 
+use Auth;
+
 class Middleware {
 
 	public function __construct() {
@@ -10,7 +12,7 @@ class Middleware {
 	}
 
 	private function auth_check() {
-		if(empty($_SESSION["authenticated"]) || $_SESSION["authenticated"] != 'true') {
+		if(Auth::authenticated()) {
 			header('Location: '. URL . 'auth/login');
 		}
 	}

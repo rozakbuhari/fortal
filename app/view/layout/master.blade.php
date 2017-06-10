@@ -9,48 +9,15 @@
     <link rel="stylesheet" href="{{ URL . 'css/style.css' }}">
     <link rel="stylesheet" href="{{ URL . 'scripts/ionicons/css/ionicons.min.css' }}">
     <link rel="stylesheet" href="{{ URL . 'scripts/toast/jquery.toast.min.css' }}">
+    @yield('style')
 </head>
 
 <body>
-<div class="topbar">
-    <div class="container">
-        <div class="inner">
-            <div class="left">
-                <ul class="info">
-                    <li>
-                        <a href="#"><i class="ion-ios-email-outline"></i> editor@fortal.co.id</a></li>
-                </ul>
-            </div>
-            <div class="right">
-                <ul class="topbar-nav">
-                    @if(!isset($_SESSION["authenticated"]))
-                        <li><a href="#" data-toggle="modal" data-target="#modalDaftar">Daftar</a></li>
-                        <li>
-                            <a href="#login-modal" data-toggle="modal" data-target="#login-modal">
-                                <i class="ion-ios-help-outline"></i> Login
-                            </a>
-                        </li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ $_SESSION['user']->fullname }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li style="float: none">
-                                    <a href="{{ URL. 'auth/profile' }}" style="margin-left: 0; padding: 10px;">Profil</a></li>
-                                <li style="float: none">
-                                    <a href="{{ URL. 'auth/logout' }}" style="margin-left: 0; padding: 10px;">Logout</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+@include('partial._topbar')
 <header class="primary">
     <div class="container">
         <div class="brand">
-            <a href="#">
+            <a href="{{ URL }}">
                 <div class="text">
                     FORTAL
                 </div>
@@ -61,27 +28,20 @@
         </div>
         <div class="right social trp">
             <li>
-                <div class="search">
-                    <form>
-                        <input type="text" class="form-control search-input" name="s" placeholder="Search">
-                    </form>
-                </div>
-            </li>
-            <li>
-                <a href="#" class="search-toggle">
-                    <svg>
-                        <rect/>
-                    </svg>
-                    <i class="ion-search"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="rss">
-                    <svg>
-                        <rect/>
-                    </svg>
-                    <i class="ion-social-rss"></i>
-                </a>
+                <form action="{{ URL }}" class="form-inline" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="query">
+                    </div>
+                    <div class="form-group">
+                        <select type="text" class="form-control" name="filter">
+                            <option>Pilih</option>
+                            <option value="title">Judul</option>
+                            <option value="category">Kategori</option>
+                            <option value="created_at">Tanggal</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </form>
             </li>
         </div>
     </div>
@@ -92,27 +52,11 @@
             <li>
                 <a href="{{ URL }}">BERANDA</a>
             </li>
-            <li>
-                <a href="#">NGE-TRENDZ
-                    <div class="badge">Hot!</div>
-                </a>
-            </li>
-            <li class="magz-dropdown"><a href="#">NASIONAL <i class="ion-ios-arrow-right"></i></a>
-                <ul>
-                    <li><a href="#">POLITIK</a></li>
-                    <li class="magz-dropdown">
-                        <a href="#">TEKNOLOGI <i class="ion-ios-arrow-right"></i></a>
-                        <ul>
-                            <li><a href="3">GADGET</a></li>
-                            <li class="magz-dropdown"><a href="#">GAMING <i class="ion-ios-arrow-right"></i></a>
-                                <ul>
-                                    <li><a href="#">ADVENTURE</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+            @foreach($categories as $category)
+                <li>
+                    <a href="#">{{ strtoupper($category->name) }}</a>
+                </li>
+            @endforeach
         </ul>
     </div>
 </nav>
@@ -164,7 +108,7 @@
                                 <div class="inner">
                                     <figure>
                                         <a href="#">
-                                            <img src="holder.js/80x60">
+                                            <img src="{{ URL . 'images/placeholder.png' }}">
                                         </a>
                                     </figure>
                                     <div class="padding">
@@ -315,6 +259,19 @@
                         <input type="password" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label for="question">Pertanyaan Rahasia</label>
+                        <select name="question" id="question" class="form-control">
+                            <option value="">Pilih salah satu</option>
+                            @foreach($questions as $question)
+                                <option value="{{ $question->id }}">{{ $question->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="jawaban">Jawaban</label>
+                        <input type="text" class="form-control" id="answer" name="answer">
+                    </div>
+                    <div class="form-group">
                         <img src="{{ URL . 'auth/captcha' }}" alt="captcha" class="img-thumbnail">
                     </div>
                     <div class="form-group">
@@ -338,6 +295,8 @@
 <script src="{{ URL . 'scripts/toast/jquery.toast.min.js' }}"></script>
 <script src="{{ URL . 'scripts/touchswipe/jquery.touchSwipe.min.js' }}"></script>
 <script src="{{ URL . 'scripts/jquery-number/jquery.number.min.js' }}"></script>
-<script src="{{ URL . 'scripts/holder/holder.min.js' }}"></script>
+
+@yield('script')
+
 </body>
 </html>

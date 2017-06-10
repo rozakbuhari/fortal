@@ -59,5 +59,8 @@ class Application {
         unset($url[0], $url[1]);
     
         $this->url_params = array_values($url);
+        
+//        json([$this->url_controller, $this->url_action, $this->url_params]);
+        
     }
 }

@@ -49,6 +49,11 @@ class Model {
             return ':' . $key;
         }, $this->fillable);
         
+        // Insert timestamp
+        $this->fillable[] = 'created_at';
+        $keys[] = ':created_at';
+        $params['created_at'] = date('Y-m-d h:i:s');
+        
         $fillable = implode($this->fillable, ', ');
         $keys = implode($keys, ', ');
         
@@ -57,7 +62,7 @@ class Model {
     
         $statement = $this->db->prepare($sql);
         $statement->execute($params);
-        
+    
         return $this->db->lastInsertId();
     }
     
@@ -67,12 +72,18 @@ class Model {
         foreach($fillable as $key => $val) {
             $fillable[$key] = "{$val} = :{$val}";
         }
+    
+        $fillable[] = 'updated_at = :updated_at';
+        $params['updated_at'] = date('Y-m-d h:i:s');
+        
         $fillable = implode($fillable, ', ');
         
         $sql = "UPDATE {$this->table} SET {$fillable} WHERE id = {$id}";
         $statement = $this->db->prepare($sql);
-    
-        return $statement->execute($params);
+        
+        $statement->execute($params);
+        
+        return  $statement->rowCount();
     }
     
     public function delete($id) {

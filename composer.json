@@ -12,7 +12,8 @@
     "minimum-stability": "dev",
     "require": {
         "jenssegers/blade": "dev-master",
-        "gregwar/captcha": "dev-master"
+        "gregwar/captcha": "dev-master",
+        "nesbot/carbon": "^1.23@dev"
     },
     "autoload":
     {

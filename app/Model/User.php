@@ -8,7 +8,7 @@ class User extends Model {
     
     protected $table = 'user';
     
-    protected $fillable = ['password', 'fullname', 'email', 'gender'];
+    protected $fillable = ['password', 'fullname', 'email', 'gender', 'security_question_id', 'answer'];
     
     public function getWhere($filter) {
         
