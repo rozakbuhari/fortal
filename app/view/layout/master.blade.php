@@ -54,7 +54,7 @@
             </li>
             @foreach($categories as $category)
                 <li>
-                    <a href="#">{{ strtoupper($category->name) }}</a>
+                    <a href="{{ URL . 'category/post/' . $category->slug }}">{{ strtoupper($category->name) }}</a>
                 </li>
             @endforeach
         </ul>
@@ -89,12 +89,9 @@
                     </h1>
                     <div class="block-body">
                         <ul class="tags">
-                            <li><a href="#">MotoGP</a></li>
-                            <li><a href="#">Gadgets</a></li>
-                            <li><a href="#">Moto2</a></li>
-                            <li><a href="#">F1 Championship</a></li>
-                            <li><a href="#">Superbike</a></li>
-                            <li><a href="#">Champion League</a></li>
+                            @foreach($categories as $category)
+                                <li><a href="{{ URL . 'category/post/' . $category->slug }}">{{ $category->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -103,24 +100,24 @@
                 <div class="block">
                     <h1 class="block-title">Berita Terbaru</h1>
                     <div class="block-body">
-                        @foreach($posts as $post)
+                        @for($i = 0; $i < 3; $i++)
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
                                         <a href="#">
-                                            <img src="{{ URL . 'images/placeholder.png' }}">
+                                            <img src="{{ URL . 'images/' . (empty($posts[$i]->image) ? 'placeholder.png' : $posts[$i]->image) }}">
                                         </a>
                                     </figure>
                                     <div class="padding">
                                         <h1>
-                                            <a href="#">
-                                                {{ $post->title }}
+                                            <a href="{{ URL . 'posts/show/' . $posts[$i]->id }}">
+                                                {{ $posts[$i]->title }}
                                             </a>
                                         </h1>
                                     </div>
                                 </div>
                             </article>
-                        @endforeach
+                        @endfor
                         <a href="#" class="btn btn-primary btn-magz white btn-block">Lihat Semua <i
                                     class="ion-ios-arrow-thin-right"></i></a>
                     </div>

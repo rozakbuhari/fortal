@@ -32,7 +32,7 @@ VALUES ('Kompetisi Kelestarian Bumi Digelar, Sampaikan Ide Terbaikmu', 'Jakarta 
 
 United Nations Environment Programme (UNEP) atau Program Lingkungan PBB meluncurkan ''Young Champions of the Earth'', sebuah inisiatif baru yang bertujuan mendorong dan mendukung para pemuda-pemudi berusia 18 sampai 30 tahun yang memiliki gagasan cemerlang untuk menyelamatkan lingkungan. Setiap tahun, enam orang pemuda, satu dari masing-masing wilayah global PBB, akan dinobatkan sebagai ''Young Champions of the Earth''.
 
-"Ada begitu banyak potensi di Indonesia untuk mengatasi perubahan iklim. Namun kami masih menghadapi berbagai kendala lingkungan. Oleh sebab itulah kami dari Covestro Indonesia sangat mendukung inisiatif UNEP ini," ungkap Managing Director PT Covestro Polymers Indonesia Lars Kesternich, melalui keterangan tertulisnya, Selasa (6/6/2017).', 2, 1, NOW());
+"Ada begitu banyak potensi di Indonesia untuk mengatasi perubahan iklim. Namun kami masih menghadapi berbagai kendala lingkungan. Oleh sebab itulah kami dari Covestro Indonesia sangat mendukung inisiatif UNEP ini," ungkap Managing Director PT Covestro Polymers Indonesia Lars Kesternich, melalui keterangan tertulisnya, Selasa (6/6/2017).', 2, 3, NOW());
 
 INSERT INTO `posts` (`title`, `content`, `author_id`,  `category_id`, `created_at`)
 VALUES ('Menyelinap ke Pesawat Lion Air, Pria Tak Bertiket Ditangkap', 'Jakarta - Seorang pria berinisial AF (40) yang tidak memiliki boarding pass menyelinap masuk ke dalam pesawat Lion Air dengan nomor penerbangan JT 384 tujuan Jakarta. AF menyelinap masuk ke pesawat di Bandara Internasional Kualanamu, Deli Serdang, Sumatera Utara.
@@ -42,20 +42,20 @@ Aksi itu dilakukan AF pada Minggu (4/6) lalu. Dari informasi sementara, warga De
 "AF berhasil mengelabui petugas keamanan dan selanjutnya berjalan menuju Gate 8 terminal keberangkatan domestik. AF berhasil masuk ke kabin pesawat setelah memanfaatkan kelengahan petugas boarding Lion Air yang sedang sibuk memeriksa bagasi penumpang lainnya," kata Kepala Bagian Kerja Sama dan Humas Perhubungan Udara Kementerian Perhubungan Agoes Soebagio lewat keterangan tertulis yang diterima detikcom, Selasa (6/6/2017).', 1, 1, NOW());
 
 # Category Seeds
-INSERT INTO `categories` (`name`, `created_at`)
-VALUES ('Kesehatan', NOW());
+INSERT INTO `categories` (`name`, `slug`, `created_at`)
+VALUES ('Kesehatan', 'kesehatan', NOW());
 
-INSERT INTO `categories` (`name`, `created_at`)
-VALUES ('Olahraga', NOW());
+INSERT INTO `categories` (`name`, `slug`, `created_at`)
+VALUES ('Olahraga', 'olahraga', NOW());
 
-INSERT INTO `categories` (`name`, `created_at`)
-VALUES ('Teknologi', NOW());
+INSERT INTO `categories` (`name`, `slug`, `created_at`)
+VALUES ('Teknologi', 'teknologi', NOW());
 
-INSERT INTO `categories` (`name`, `created_at`)
-VALUES ('Otomotif', NOW());
+INSERT INTO `categories` (`name`, `slug`, `created_at`)
+VALUES ('Otomotif', 'otomotif', NOW());
 
-INSERT INTO `categories` (`name`, `created_at`)
-VALUES ('Ekonomi', NOW());
+INSERT INTO `categories` (`name`, `slug`, `created_at`)
+VALUES ('Ekonomi', 'ekonomi', NOW());
 
 # Security Question
 INSERT INTO `security_questions` (`name`, `created_at`)

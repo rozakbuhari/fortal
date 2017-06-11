@@ -3,12 +3,20 @@
 namespace App\Model;
 
 use App\Core\Model;
+use Illuminate\Support\Facades\Route;
 
 class User extends Model {
     
     protected $table = 'user';
     
-    protected $fillable = ['password', 'fullname', 'email', 'gender', 'security_question_id', 'answer'];
+    protected $fillable = ['password', 'fullname', 'email', 'gender', 'security_question_id', 'answer', 'role_id'];
+    
+    public function find($id) {
+        $user = parent::find($id);
+        $user->role = self::role($user->id);
+        
+        return $user;
+    }
     
     public function getWhere($filter) {
         
@@ -21,14 +29,14 @@ class User extends Model {
         return $query->fetch();
     }
     
-    public function roles($user_id) {
-        $sql = "SELECT role.* FROM role LEFT JOIN user_role ON user_role.role_id = role.id WHERE user_role.user_id = :user_id";
+    public function role($user_id) {
+        $sql = "SELECT role.* FROM role LEFT JOIN user_role ON user_role.role_id = role.id WHERE user_role.user_id = :user_id LIMIT 1";
         
         $query = $this->db->prepare($sql);
         $parameters = [':user_id' => $user_id];
         $query->execute($parameters);
         
-        return $query->fetchAll();
+        return $query->fetch();
     }
     
     public function search($filters) {

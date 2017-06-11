@@ -7,7 +7,7 @@
                 <h3>
                     {{ $post->title }}
                 </h3>
-                <span style="margin-right: 20px;"><span class="ion-clock"></span> {{ $post->created_at }}</span>
+                <span style="margin-right: 20px;"><span class="ion-calendar"></span> {{ \Carbon\Carbon::parse($post->created_at)->format('d-M-Y h:m') }}</span>
                 <span><span class="ion-person"></span> {{ $post->author->fullname }}</span>
             </div>
             <br>
@@ -22,7 +22,7 @@
                 @foreach($post->comments as $comment)
                     <div><span class="ion ion-person" style="margin-right: 10px;"></span> {{ $comment->author->fullname }}</div>
                     <p>{{ $comment->content }}</p>
-                    <p class="text-right">{{ $comment->created_at }}</p>
+                    <p class="text-right"><span class="ion-calendar"></span> {{ \Carbon\Carbon::parse($comment->created_at)->format('d-M-Y h:m') }}</p>
                     <hr>
                 @endforeach
             </div>

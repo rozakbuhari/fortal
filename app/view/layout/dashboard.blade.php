@@ -31,21 +31,25 @@
     </div>
     <hr>
 </header>
-<nav class="menu">
-    <div class="container">
-        <ul>
-            <li>
-                <a href="{{ URL . 'posts' }}">POSTINGAN</a>
-            </li>
-            <li>
-                <a href="#">KATEGORI</a>
-            </li>
-            <li>
-                <a href="{{ URL . 'ads' }}">IKLAN</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+@isset(\Auth::user()->role->name)
+    @if(\Auth::user()->role->name == 'admin')
+        <nav class="menu">
+            <div class="container">
+                <ul>
+                    <li>
+                        <a href="{{ URL . 'posts' }}">POSTINGAN</a>
+                    </li>
+                    <li>
+                        <a href="{{ URL . 'category' }}">KATEGORI</a>
+                    </li>
+                    <li>
+                        <a href="{{ URL . 'ads' }}">IKLAN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    @endif
+@endisset
 
 <section>
     <div class="container">

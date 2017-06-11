@@ -41,26 +41,11 @@ CREATE TABLE `posts` (
   `updated_at` DATETIME NULL
 ) AUTO_INCREMENT=1;
 
-DROP TABLE IF EXISTS `tags`;
-CREATE TABLE `tags` (
-  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` varchar(48) NOT NULL,
-  `created_at` DATETIME NULL,
-  `updated_at` DATETIME NULL
-) AUTO_INCREMENT=1;
-
-DROP TABLE IF EXISTS `tag_post`;
-CREATE TABLE `tag_post` (
-  `tag_id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `created_at` DATETIME NULL,
-  `updated_at` DATETIME NULL
-) AUTO_INCREMENT=1;
-
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(48) NOT NULL,
+  `slug` VARCHAR(255) NOT NULL,
   `created_at` DATETIME NULL,
   `updated_at` DATETIME NULL
 ) AUTO_INCREMENT=1;

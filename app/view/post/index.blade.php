@@ -33,10 +33,10 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->author->fullname }}</td>
                         <td>{{ $post->created_at }}</td>
-                        <td>{{ $post->category }}</td>
+                        <td>{{ $post->category->name }}</td>
                         <td>
                             <a href="{{ URL . 'posts/edit/' . $post->id }}" class="btn btn-success btn-sm">Edit</a>
-                            <a href="{{ URL . 'posts/delete/' . $post->id }}" class="btn btn-primary btn-sm">Hapus</a>
+                            <a href="{{ URL . 'posts/delete/' . $post->id }}" class="btn btn-primary btn-sm btn-post-del">Hapus</a>
                         </td>
                     </tr>
                     @endforeach
@@ -68,6 +68,15 @@
                         '</select> postingan'
                 }
             });
-        })
+        });
+
+        $(".btn-post-del").click(function (e) {
+            e.preventDefault();
+
+            var isConfirmed = confirm("Anda yakin ingin menghapus postingan ini?");
+            if (isConfirmed) window.location = e.target.href;
+
+            return false;
+        });
     </script>
 @endsection

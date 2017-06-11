@@ -43,7 +43,7 @@ class Post extends Model {
             $comments = $Comment->getWhere(['post_id' => $post->id]);
     
             $post->author = $author;
-            $post->category = $category->name;
+            $post->category = $category;
             $post->comments = $comments;
             
             return $post;
@@ -59,7 +59,14 @@ class Post extends Model {
             $posts = array_filter($posts, function ($post) use ($filters) {
                 $found = FALSE;
                 foreach ($filters as $key => $val) {
-                    $found = preg_match("/{$val}/i", $post->{$key});
+                    if ($key == 'category') {
+                        $found = preg_match("/{$val}/i", $post->category->name);
+                    } elseif ($key == 'slug') {
+                        $found = preg_match("/{$val}/i", $post->category->slug);
+                    } else {
+                        $found = preg_match("/{$val}/i", $post->{$key});
+                    }
+    
                 }
 
                 return $found;

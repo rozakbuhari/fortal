@@ -24,7 +24,7 @@ class AuthController extends Controller {
                 
                 $User = new User();
                 $user = $User->getWhere(['email' => $email, 'password' => $password]);
-                $user->roles = $User->roles($user->id);
+                $user->roles = $User->role($user->id);
     
     
                 if (isset($user->id)) {

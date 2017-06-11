@@ -21,8 +21,12 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->fullname }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                @isset(\Auth::user()->role->name)
+                                    @if(\Auth::user()->role->name == 'admin')
                                 <li style="float: none">
                                     <a href="{{ URL. 'dashboard' }}" style="margin-left: 0; padding: 10px;">Dashboard</a></li>
+                                    @endif
+                                @endisset
                                 <li style="float: none">
                                     <a href="{{ URL. 'auth/profile' }}" style="margin-left: 0; padding: 10px;">Profil</a></li>
                                 <li style="float: none">

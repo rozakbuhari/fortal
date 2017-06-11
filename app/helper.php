@@ -15,7 +15,7 @@ class Auth {
     
     public static function user() {
         $User = new \App\Model\User();
-        return isset($_SESSION['user_id']) ? $User->find($_SESSION['user_id']) : new stdClass();
+        return isset($_SESSION['user_id']) ? $User->find($_SESSION['user_id']) : null;
     }
     
     public static function setUserId($id) {
