@@ -83,3 +83,12 @@ VALUES ('sirup.jpg', 'Sirup', SUBDATE(CURRENT_DATE(), 1), SUBDATE(CURRENT_DATE()
 INSERT INTO `ads` (`image`,`text`, `expired`, `created_at`)
 VALUES ('tahu-bulat.jpg', 'Tahu Bulat', CURDATE() + INTERVAL 3 DAY, NOW());
 
+# Comments Seeds
+INSERT INTO `comments` (`author_id`, `post_id`, `content`, `created_at`)
+VALUES (1, 1, 'Hello, Ini Komentar Admin.', NOW());
+
+INSERT INTO `comments` (`author_id`, `post_id`, `content`, `created_at`)
+VALUES (2, 1, 'Hello, Ini Komentar Citra.', NOW());
+
+INSERT INTO `comments` (`author_id`, `post_id`, `content`, `created_at`)
+VALUES (1, 1, 'Hello, Ini Komentar Admin.', NOW());

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Core\Controller;
+use App\Model\Ad;
 use App\Model\Category;
 use App\Model\Post;
 use App\Model\Tag;
@@ -28,8 +29,11 @@ class PostsController extends Controller {
         
         $Category = new Category();
         $categories = $Category->get();
+    
+        $Ad = new Ad();
+        $ads = $Ad->notExpired();
         
-        echo view('post.show', compact('post', 'posts', 'categories'));
+        echo view('post.show', compact('post', 'posts', 'categories', 'ads'));
     }
     
     public function create() {

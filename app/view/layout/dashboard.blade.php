@@ -41,9 +41,6 @@
                 <a href="#">KATEGORI</a>
             </li>
             <li>
-                <a href="#">KOMENTAR</a>
-            </li>
-            <li>
                 <a href="{{ URL . 'ads' }}">IKLAN</a>
             </li>
         </ul>

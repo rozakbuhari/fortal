@@ -90,3 +90,13 @@ CREATE TABLE `security_questions` (
   `created_at` DATETIME NULL,
   `updated_at`DATETIME NULL
 ) AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `author_id` INT(11) NOT NULL,
+  `post_id` INT(11) NOT NULL,
+  `content` TEXT NULL,
+  `created_at` DATETIME NULL,
+  `updated_at`DATETIME NULL
+) AUTO_INCREMENT=1;

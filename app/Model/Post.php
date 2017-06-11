@@ -19,8 +19,12 @@ class Post extends Model {
         $Author = new User();
         $author = $Author->find($post->author_id);
         
+        $Comment = new Comment();
+        $comments = $Comment->getWhere(['post_id' => $post->id]);
+        
         $post->author = $author;
         $post->category = $category->name;
+        $post->comments = $comments;
         
         return $post;
     }
@@ -35,8 +39,12 @@ class Post extends Model {
             $Author = new User();
             $author = $Author->find($post->author_id);
     
+            $Comment = new Comment();
+            $comments = $Comment->getWhere(['post_id' => $post->id]);
+    
             $post->author = $author;
             $post->category = $category->name;
+            $post->comments = $comments;
             
             return $post;
         }, $posts);

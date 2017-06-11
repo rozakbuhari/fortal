@@ -12,8 +12,9 @@ class AdsController extends Controller {
     public function index() {
         $Ad = new Ad();
         $ads = $Ad->get();
+        $total = 0;
         
-        echo view('ad.index', compact('ads'));
+        echo view('ad.index', compact('ads', 'total'));
     }
     
     public function show($id) {

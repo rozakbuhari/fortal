@@ -19,7 +19,7 @@
                     <th></th>
                     <th>Text</th>
                     <th>Expired</th>
-                    <th>Created</th>
+                    <th>Harga</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,9 +30,16 @@
                         </td>
                         <td>{{ $ad->text }}</td>
                         <td>{{ $ad->expired }}</td>
-                        <td>{{ $ad->created_at }}</td>
+                        <td><span class="text-success">{{ 'Rp. ' . number_format(500000, 0, ',' , '.') }}</span></td>
                     </tr>
+                    <?php $total += 500000 ?>
                 @endforeach
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>Total Laba: </td>
+                        <td><span class="text-success">{{ 'Rp. ' . number_format($total, 0, ',' , '.') }}</span></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
