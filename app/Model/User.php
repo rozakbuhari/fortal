@@ -31,4 +31,21 @@ class User extends Model {
         return $query->fetchAll();
     }
     
+    public function search($filters) {
+        
+        $keys = [];
+        foreach ($filters as $key => $val) {
+            $keys[] = "{$key} = :{$key}";
+        }
+        
+        $keys = implode($keys, ' AND ');
+        
+        $sql = "SELECT * FROM user WHERE {$keys}";
+    
+        $query = $this->db->prepare($sql);
+        $query->execute($filters);
+    
+        return $query->fetch();
+    }
+    
 }

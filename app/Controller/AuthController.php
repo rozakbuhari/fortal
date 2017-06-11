@@ -103,7 +103,54 @@ class AuthController extends Controller {
     
     
     public function forgot() {
-        echo "Form lupa password";
+        $question = new SecurityQuestion();
+        $questions = $question->get();
+    
+        echo view('auth.forgot', compact('questions'));
+    }
+    
+    public function reset() {
+        $params = $_POST;
+        
+        $User = new User();
+        $user = $User->search([
+            'email' => $params['email'],
+            'security_question_id' => $params['question'],
+            'answer' => $params['answer']
+        ]);
+        
+        if ($user) {
+            echo view('auth.reset', compact('user'));
+        } else {
+            json("User Not Found!");
+        }
+    }
+    
+    public function resetUpdate() {
+        $params = $_POST;
+        
+        $User = new User();
+        $user = $User->find($params['user']);
+    
+    
+        $update = $User->update($user->id, [
+            'password' => $params['password'],
+            'fullname' => $user->fullname,
+            'email' => $user->email,
+            'gender' => $user->gender,
+            'security_question_id' => $user->security_question_id,
+            'answer' => $user->answer
+        ]);
+        
+        if ($update) {
+            Auth::setAuthenticated(TRUE);
+            Auth::setUserId($user->id);
+    
+            header('Location: ' . URL);
+        } else {
+            header('Location: ' . URL . 'error');
+        }
+        
     }
     
     public function captcha() {
